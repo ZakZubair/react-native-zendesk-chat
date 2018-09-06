@@ -50,15 +50,23 @@ public class RNZendeskChatModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setVisitorInfo(ReadableMap options) {
         VisitorInfo.Builder builder = new VisitorInfo.Builder();
-
+        
         if (options.hasKey("name")) {
             builder.name(options.getString("name"));
+        } else {
+            builder.name(null);
         }
+
         if (options.hasKey("email")) {
             builder.email(options.getString("email"));
+        } else {
+            builder.email(null);
         }
+
         if (options.hasKey("phone")) {
             builder.phoneNumber(options.getString("phone"));
+        } else {
+            builder.phoneNumber(null);
         }
 
         if (options.hasKey("note")) {
