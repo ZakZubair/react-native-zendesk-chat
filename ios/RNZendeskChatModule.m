@@ -100,15 +100,9 @@ RCT_EXPORT_MODULE(RNZendeskChatModule);
 
 RCT_EXPORT_METHOD(setVisitorInfo:(NSDictionary *)options) {
   [ZDCChat updateVisitor:^(ZDCVisitorInfo *visitor) {
-    if (options[@"name"]) {
-      visitor.name = options[@"name"];
-    }
-    if (options[@"email"]) {
-      visitor.email = options[@"email"];
-    }
-    if (options[@"phone"]) {
-      visitor.phone = options[@"phone"];
-    }
+	  visitor.name = options[@"name"] ? options[@"name"] : [NSNull null];
+	  visitor.email = options[@"email"] ? options[@"email"] : [NSNull null];
+	  visitor.phone = options[@"phone"] ? options[@"phone"] : [NSNull null];
     if (options[@"note"]) {
       [visitor addNote:options[@"note"]];
     }
